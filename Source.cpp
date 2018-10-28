@@ -25,6 +25,11 @@ int getLowestPosition(vector<int> dataArray) {
 	return currLowestPos;
 }
 
+int sortAndDisplay(vector<int> dataArray, vector<int> personArray) {
+	int currPos = getHighestPosition(dataArray);
+	cout << "Person: " << currPos << endl << dataArray[currPos] << " Pancakes" << endl << "======================================" << endl;
+	return 0;
+}
 
 int main() {
 	int count = 0;
@@ -39,9 +44,11 @@ int main() {
 	int lowestPos = getLowestPosition(pancakeArray);
 	cout << "Person " << highestPos+1 << ": " << pancakeArray[highestPos]  << " pancakes" << endl;
 	cout << "Person " << lowestPos + 1 << ": " << pancakeArray[lowestPos] << " pancakes" << endl;
-	sort(pancakeArray.begin(), pancakeArray.end());
-	for (count = 0; count < pancakeArray.size(); count++) {
-		cout << "Person " << count + 1 << ": " << pancakeArray[count] << endl;
+	vector<int> personArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	for (count = 0; count < 10; count++) {
+		sortAndDisplay(pancakeArray, personArray);
+		personArray.erase(personArray.begin() + getHighestPosition(pancakeArray));
+		pancakeArray.erase(pancakeArray.begin() + getHighestPosition(pancakeArray));
 	}
 	system("PAUSE");
 }
